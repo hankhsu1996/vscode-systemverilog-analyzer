@@ -1,0 +1,114 @@
+{
+  "name": "systemverilog-analyzer",
+  "displayName": "SystemVerilog Analyzer",
+  "description": "SystemVerilog language support for Visual Studio Code",
+  "author": "Shou-Li Hsu",
+  "license": "MIT",
+  "version": "0.0.1",
+  "publisher": "hankhsu1996",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "vscode": "^1.63.0"
+  },
+  "activationEvents": [
+    "onLanguage:systemverilog"
+  ],
+  "main": "./client/out/extension",
+  "contributes": {
+    "languages": [
+      {
+        "id": "librarymap",
+        "aliases": [
+          "Library Map",
+          "map",
+          "lmf",
+          "librarymap"
+        ],
+        "extensions": [
+          ".map",
+          ".lmf"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "systemverilog",
+        "aliases": [
+          "SystemVerilog",
+          "sv",
+          "SV"
+        ],
+        "extensions": [
+          ".v",
+          ".vh",
+          ".sv",
+          ".svh"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "librarymap",
+        "scopeName": "source.sv",
+        "path": "./syntaxes/systemverilog.tmLanguage.json"
+      },
+      {
+        "language": "systemverilog",
+        "scopeName": "source.sv",
+        "path": "./syntaxes/systemverilog.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Example configuration",
+      "properties": {
+        "languageServerExample.maxNumberOfProblems": {
+          "scope": "resource",
+          "type": "number",
+          "default": 100,
+          "description": "Controls the maximum number of problems produced by the server."
+        },
+        "languageServerExample.trace.server": {
+          "scope": "window",
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the language server."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf ./client/out ./server/out",
+    "js-yaml": "npx js-yaml syntaxes/systemverilog.tmLanguage.yaml > syntaxes/systemverilog.tmLanguage.json",
+    "compile": "npm run js-yaml && tsc --build",
+    "watch": "npm run js-yaml && tsc --build --watch",
+    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+    "vscode:prepublish": "npm run compile",
+    "test": "npm run compile && mocha server/out/**/*.test.js"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "chai": "^4.3.6",
+    "eslint": "^8.13.0",
+    "js-yaml": "^4.1.0",
+    "mocha": "^9.2.2",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "vscode-languageserver-types": "^3.17.1",
+    "vscode-uri": "^3.0.3"
+  }
+}

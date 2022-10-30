@@ -1,0 +1,21 @@
+{
+  "name": "systemverilog-analyzer-server",
+  "displayName": "SystemVerilog Analyzer Server",
+  "description": "Server for SystemVerilog Analyzer",
+  "author": "Shou-Li Hsu",
+  "license": "MIT",
+  "version": "0.0.1",
+  "publisher": "hankhsu1996",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "vscode-languageserver": "^7.0.0",
+    "vscode-languageserver-textdocument": "^1.0.4"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@vscode/test-electron": "^2.1.5"
+  }
+}

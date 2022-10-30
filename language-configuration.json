@@ -1,0 +1,63 @@
+{
+  "comments": {
+    "blockComment": ["/*", "*/"],
+    "lineComment": "//"
+  },
+  // TODO(hankhsu1996): Determine if we need to add #() and `"`" pair.
+  "brackets": [
+    ["(*", "*)"],
+    ["(", ")"],
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"]
+  ],
+  // TODO(hankhsu1996): Determine if we need to add macro string pair `"string`".
+  "autoClosingPairs": [
+    ["(*", "*)"],
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"],
+    {
+      "open": "\"",
+      "close": "\"",
+      "notIn": ["string"]
+    },
+    {
+      "open": "/*",
+      "close": "*/",
+      "notIn": ["string"]
+    }
+  ],
+  "surroundingPairs": [
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"],
+    ["\"", "\""]
+  ],
+  "colorizedBracketPairs": [
+    ["(*", "*)"],
+    ["#(", ")"],
+    ["# (", ")"],
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"]
+  ],
+  "autoCloseBefore": ";:.,=}])> \n\t",
+  "folding": {
+    "markers": {
+      "start": "^\\s*(module)\\b",
+      "end": "^\\s*(endmodule)\\b"
+    }
+  },
+  // TODO(hankhsu1996): Add the pattern for numbers
+  // TODO(hankhsu1996): Determine if we need to add a pattern for \ escapes
+  // Treat `MACRO, $system_task as words
+  "wordPattern": "[^\\~\\!\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>/\\?\\s]+",
+  "indentationRules": {
+    // TODO(shoulihs): Add the indentation rules.
+    // TODO(shoulihs): Check indentNextLinePattern and unIndentedLinePattern properties later.
+    "increaseIndentPattern": "",
+    "decreaseIndentPattern": ""
+  },
+  "onEnterRules": []
+}
