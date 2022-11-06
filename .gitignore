@@ -130,6 +130,7 @@ dist
 .pnp.*
 
 # ANTLR generated files
+**/grammars/.antlr
 **/grammars/*.interp
 **/grammars/*.tokens
 **/grammars/*.ts
