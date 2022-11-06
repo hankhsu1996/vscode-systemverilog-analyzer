@@ -52,12 +52,12 @@
     "grammars": [
       {
         "language": "librarymap",
-        "scopeName": "source.sv",
+        "scopeName": "source.systemverilog",
         "path": "./syntaxes/systemverilog.tmLanguage.json"
       },
       {
         "language": "systemverilog",
-        "scopeName": "source.sv",
+        "scopeName": "source.systemverilog",
         "path": "./syntaxes/systemverilog.tmLanguage.json"
       }
     ],
@@ -86,25 +86,25 @@
     }
   },
   "scripts": {
-    "clean": "rm -rf ./client/out ./server/out",
+    "clean": "rm -rf ./client/out ./server/out && jest --clearCache",
     "js-yaml": "npx js-yaml syntaxes/systemverilog.tmLanguage.yaml > syntaxes/systemverilog.tmLanguage.json",
-    "compile": "npm run js-yaml && tsc --build",
-    "watch": "npm run js-yaml && tsc --build --watch",
+    "lexer": "antlr4ts -visitor ./server/src/grammars/SystemVerilog2017Lexer.g4",
+    "parser": "antlr4ts -visitor ./server/src/grammars/SystemVerilog2017Parser.g4",
+    "antlr": "npm run lexer && npm run parser",
+    "compile": "npm run js-yaml && npm run antlr && tsc --build",
+    "watch": "npm run js-yaml && npm run antlr && tsc --build --watch",
     "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
     "vscode:prepublish": "npm run compile",
-    "test": "npm run compile && mocha server/out/**/*.test.js"
+    "test": "jest --test-match **/server/**/*.test.ts --watch"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.1",
-    "@types/mocha": "^9.1.1",
+    "@types/jest": "^29.2.2",
     "@types/node": "^16.11.7",
-    "@typescript-eslint/eslint-plugin": "^5.30.0",
-    "@typescript-eslint/parser": "^5.30.0",
-    "chai": "^4.3.6",
+    "antlr4ts": "^0.5.0-alpha.4",
+    "antlr4ts-cli": "^0.5.0-alpha.4",
     "eslint": "^8.13.0",
     "js-yaml": "^4.1.0",
-    "mocha": "^9.2.2",
-    "ts-node": "^10.8.2",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.7.2"
   },
   "dependencies": {

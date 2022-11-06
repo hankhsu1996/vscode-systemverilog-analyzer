@@ -130,9 +130,9 @@ dist
 .pnp.*
 
 # ANTLR generated files
-src/grammars/*.interp
-src/grammars/*.tokens
-src/grammars/*.ts
+**/grammars/*.interp
+**/grammars/*.tokens
+**/grammars/*.ts
 
 # VS code extension files
 *.vsix
